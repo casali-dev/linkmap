@@ -1,8 +1,9 @@
 package main
 
 import (
-	"log"
 	"net/http"
+
+	"github.com/charmbracelet/log"
 
 	"github.com/casali-dev/linkmap/internal/db"
 	"github.com/casali-dev/linkmap/internal/router"

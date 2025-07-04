@@ -1,7 +1,7 @@
 package db
 
 import (
-	"log"
+	"github.com/charmbracelet/log"
 
 	"github.com/casali-dev/linkmap/internal/models"
 	"github.com/glebarez/sqlite"

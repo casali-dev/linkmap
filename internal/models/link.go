@@ -21,3 +21,10 @@ func (l *Link) BeforeCreate(tx *gorm.DB) (err error) {
 	}
 	return
 }
+
+func CreateLink(url string, slug string) Link {
+	return Link{
+		URL:  url,
+		Slug: slug,
+	}
+}
