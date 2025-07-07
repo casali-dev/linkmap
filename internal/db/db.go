@@ -3,13 +3,14 @@ package db
 import (
 	"github.com/charmbracelet/log"
 
+	"github.com/casali-dev/linkmap/internal/config"
 	"github.com/casali-dev/linkmap/internal/models"
 	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 )
 
-func Init() *gorm.DB {
-	db, err := gorm.Open(sqlite.Open("linkmap.db"), &gorm.Config{})
+func Init(cfg *config.Config) *gorm.DB {
+	db, err := gorm.Open(sqlite.Open(cfg.DBPath), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("failed to connect database: %v", err)
 	}

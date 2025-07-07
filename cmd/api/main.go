@@ -5,15 +5,22 @@ import (
 
 	"github.com/charmbracelet/log"
 
+	"github.com/casali-dev/linkmap/internal/config"
 	"github.com/casali-dev/linkmap/internal/db"
 	"github.com/casali-dev/linkmap/internal/router"
 )
 
 func main() {
-	db := db.Init()
+	cfg, err := config.LoadConfig()
+
+	if err != nil {
+		log.Fatalf("Unable to load env variables. Error: %s", err)
+	}
+
+	db := db.Init(cfg)
 
 	s := &http.Server{
-		Addr:    ":8080",
+		Addr:    ":" + cfg.Port,
 		Handler: router.Handler(db),
 	}
 

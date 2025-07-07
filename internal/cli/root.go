@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/charmbracelet/log"
 	"github.com/spf13/cobra"
 )
 
@@ -17,7 +16,7 @@ Simple. Open Source. Self-hosted. Written in Go.
 Built with 🩵
 by casali-dev`,
 	Run: func(cmd *cobra.Command, args []string) {
-		log.Info("Linkmap, your links in O(1)")
+		fmt.Println("Linkmap - an open-source URL shortener written in Go.")
 	},
 }
 
