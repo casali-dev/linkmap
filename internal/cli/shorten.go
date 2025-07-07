@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"github.com/casali-dev/linkmap/internal/config"
 	"github.com/casali-dev/linkmap/internal/db"
 	"github.com/casali-dev/linkmap/internal/services"
 	"github.com/charmbracelet/log"
@@ -16,7 +17,12 @@ var shortenCmd = &cobra.Command{
 	Short: "Creates the shortened version of the given URL",
 	Long:  `Register the given URL, creating the shortened version of the url.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		db := db.Init()
+		cfg, err := config.LoadConfig()
+		if err != nil {
+			log.Fatal("Unable to load env variables.")
+		}
+
+		db := db.Init(cfg)
 
 		if len(args) < 1 {
 			log.Error("You must provide a URL.")
